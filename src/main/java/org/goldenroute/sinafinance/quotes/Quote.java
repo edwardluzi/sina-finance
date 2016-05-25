@@ -357,9 +357,9 @@ public class Quote
 
 	public Quote(String content)
 	{
-		String[] items = content.split("=,n");
+		String[] items = content.split("=|,");
 
-		if (items.length != 33)
+		if (items.length != 34)
 		{
 			throw new IllegalArgumentException("content");
 		}

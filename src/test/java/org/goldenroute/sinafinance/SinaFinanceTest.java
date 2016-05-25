@@ -21,5 +21,6 @@ public class SinaFinanceTest
 		List<Quote> quotes = SinaFinance.getQuotes(symbols);
 
 		assertNotNull(quotes);
+		assert(quotes.size() == 2);
 	}
 }

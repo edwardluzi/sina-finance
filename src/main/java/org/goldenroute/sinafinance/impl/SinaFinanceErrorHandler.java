@@ -1,4 +1,4 @@
-package org.goldenroute.sinafinance.utils;
+package org.goldenroute.sinafinance.impl;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -13,7 +13,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class SinaErrorHandler extends DefaultResponseErrorHandler
+public class SinaFinanceErrorHandler extends DefaultResponseErrorHandler
 {
 	@Override
 	public void handleError(ClientHttpResponse response) throws IOException

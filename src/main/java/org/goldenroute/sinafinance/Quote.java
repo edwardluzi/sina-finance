@@ -1,4 +1,4 @@
-package org.goldenroute.sinafinance.quotes;
+package org.goldenroute.sinafinance;
 
 public class Quote
 {
@@ -398,5 +398,20 @@ public class Quote
 		this.ask5 = Double.parseDouble(items[30]);
 
 		this.timestamp = items[31] + " " + items[32];
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Quote [symbol=" + symbol + ", name=" + name + ", open=" + open + ", historyClose="
+				+ historyClose + ", price=" + price + ", dayHigh=" + dayHigh + ", dayLow=" + dayLow
+				+ ", bid=" + bid + ", ask=" + ask + ", volume=" + volume + ", turnover=" + turnover
+				+ ", bidSize1=" + bidSize1 + ", bid1=" + bid1 + ", bidSize2=" + bidSize2
+				+ ", bid2=" + bid2 + ", bidSize3=" + bidSize3 + ", bid3=" + bid3 + ", bidSize4="
+				+ bidSize4 + ", bid4=" + bid4 + ", bidSize5=" + bidSize5 + ", bid5=" + bid5
+				+ ", askSize1=" + askSize1 + ", ask1=" + ask1 + ", askSize2=" + askSize2
+				+ ", ask2=" + ask2 + ", askSize3=" + askSize3 + ", ask3=" + ask3 + ", askSize4="
+				+ askSize4 + ", ask4=" + ask4 + ", askSize5=" + askSize5 + ", ask5=" + ask5
+				+ ", timestamp=" + timestamp + "]";
 	}
 }

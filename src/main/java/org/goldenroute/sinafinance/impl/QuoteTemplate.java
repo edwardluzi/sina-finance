@@ -1,38 +1,38 @@
-package org.goldenroute.sinafinance.quotes;
+package org.goldenroute.sinafinance.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.goldenroute.sinafinance.utils.SinaErrorHandler;
+import org.goldenroute.sinafinance.Quote;
+import org.goldenroute.sinafinance.QuoteOperations;
 import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestOperations;
 
-public class QuotesRequest
+public class QuoteTemplate implements QuoteOperations
 {
-	private static final Logger logger = Logger.getLogger(QuotesRequest.class);
-
 	private final String BASE_URL = "http://hq.sinajs.cn/format=text&list=";
 
-	private Collection<String> symbols;
-	private RestTemplate restTemplate;
+	private static final Logger logger = Logger.getLogger(QuoteTemplate.class);
 
-	public QuotesRequest(Collection<String> symbols)
+	private final RestOperations restOperations;
+
+	public QuoteTemplate(RestOperations restOperations)
 	{
-		this.symbols = symbols;
-		this.restTemplate = new RestTemplate();
-		this.restTemplate.setErrorHandler(new SinaErrorHandler());
+		this.restOperations = restOperations;
+
 	}
 
-	public List<Quote> getResult()
+	@Override
+	public List<Quote> getQuotes(Collection<String> symbols)
 	{
-		String response;
+		String response = null;
 		List<Quote> quotes = new ArrayList<>();
 
 		try
 		{
-			response = this.restTemplate.getForObject(BASE_URL + String.join(",", this.symbols),
+			response = this.restOperations.getForObject(BASE_URL + String.join(",", symbols),
 					String.class);
 		}
 		catch (RestClientException e)

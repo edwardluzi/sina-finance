@@ -1,16 +1,12 @@
 package org.goldenroute.sinafinance;
 
-import java.util.Collection;
-import java.util.List;
+import org.springframework.web.client.RestOperations;
 
-import org.goldenroute.sinafinance.quotes.Quote;
-import org.goldenroute.sinafinance.quotes.QuotesRequest;
-
-public class SinaFinance
+public interface SinaFinance
 {
-	public static List<Quote> getQuotes(Collection<String> symbols)
-	{
-		QuotesRequest request = new QuotesRequest(symbols);
-		return request.getResult();
-	}
+	TimeseriesOperations timeseriesOperations();
+
+	QuoteOperations quoteOperations();
+
+	RestOperations restOperations();
 }

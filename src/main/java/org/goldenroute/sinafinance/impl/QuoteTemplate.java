@@ -12,52 +12,51 @@ import org.springframework.web.client.RestOperations;
 
 public class QuoteTemplate implements QuoteOperations
 {
-	private final String BASE_URL = "http://hq.sinajs.cn/format=text&list=";
+    private final String BASE_URL = "http://hq.sinajs.cn/format=text&list=";
 
-	private static final Logger logger = Logger.getLogger(QuoteTemplate.class);
+    private static final Logger logger = Logger.getLogger(QuoteTemplate.class);
 
-	private final RestOperations restOperations;
+    private final RestOperations restOperations;
 
-	public QuoteTemplate(RestOperations restOperations)
-	{
-		this.restOperations = restOperations;
+    public QuoteTemplate(RestOperations restOperations)
+    {
+        this.restOperations = restOperations;
 
-	}
+    }
 
-	@Override
-	public List<Quote> getQuotes(Collection<String> symbols)
-	{
-		String response = null;
-		List<Quote> quotes = new ArrayList<>();
+    @Override
+    public List<Quote> getQuotes(Collection<String> symbols)
+    {
+        String response = null;
+        List<Quote> quotes = new ArrayList<>();
 
-		try
-		{
-			response = this.restOperations.getForObject(BASE_URL + String.join(",", symbols),
-					String.class);
-		}
-		catch (RestClientException e)
-		{
-			response = null;
-			logger.error(e);
-		}
+        try
+        {
+            response = restOperations.getForObject(BASE_URL + String.join(",", symbols), String.class);
+        }
+        catch (RestClientException e)
+        {
+            response = null;
+            logger.error(e);
+        }
 
-		if (response != null)
-		{
-			String[] raws = response.split("\n");
+        if (response != null)
+        {
+            String[] raws = response.split("\n");
 
-			for (String raw : raws)
-			{
-				try
-				{
-					quotes.add(new Quote(raw));
-				}
-				catch (Exception e)
-				{
-					logger.debug(e.getMessage());
-				}
-			}
-		}
+            for (String raw : raws)
+            {
+                try
+                {
+                    quotes.add(new Quote(raw));
+                }
+                catch (Exception e)
+                {
+                    logger.debug(e.getMessage());
+                }
+            }
+        }
 
-		return quotes;
-	}
+        return quotes;
+    }
 }

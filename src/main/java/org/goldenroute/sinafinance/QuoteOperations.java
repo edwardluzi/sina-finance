@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface QuoteOperations
 {
-	List<Quote> getQuotes(Collection<String> symbols);
+    List<Quote> getQuotes(Collection<String> symbols);
 }

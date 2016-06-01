@@ -6,16 +6,16 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 
 public class SinaFinaneModule extends SimpleModule
 {
-	private static final long serialVersionUID = 2187084305052393830L;
+    private static final long serialVersionUID = 2187084305052393830L;
 
-	public SinaFinaneModule()
-	{
-		super("SinaFinaneModule");
-	}
+    public SinaFinaneModule()
+    {
+        super("SinaFinaneModule");
+    }
 
-	@Override
-	public void setupModule(SetupContext context)
-	{
-		context.setMixInAnnotations(SinaFinanceObject.class, SinaFinanceObjectMixin.class);
-	}
+    @Override
+    public void setupModule(SetupContext context)
+    {
+        context.setMixInAnnotations(SinaFinanceObject.class, SinaFinanceObjectMixin.class);
+    }
 }

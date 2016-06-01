@@ -4,9 +4,9 @@ import org.springframework.web.client.RestOperations;
 
 public interface SinaFinance
 {
-	TimeseriesOperations timeseriesOperations();
+    TimeseriesOperations timeseriesOperations();
 
-	QuoteOperations quoteOperations();
+    QuoteOperations quoteOperations();
 
-	RestOperations restOperations();
+    RestOperations restOperations();
 }

@@ -7,12 +7,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.goldenroute.sinafinance.impl.SinaFinanceTemplate;
 import org.junit.Before;
 import org.junit.Test;
 
 public class SinaFinanceTest
 {
+    private static final Logger logger = Logger.getLogger(SinaFinanceTest.class);
+
     private SinaFinance sinaFinance;
 
     @Before
@@ -30,17 +33,32 @@ public class SinaFinanceTest
 
         assertNotNull(quotes);
         assert (quotes.size() == 2);
+
+        for (Quote quote : quotes)
+        {
+            logger.debug(quote.toString());
+        }
     }
 
     @Test
     public void testTimeseries()
     {
-        List<Bar> ticks = sinaFinance.timeseriesOperations().getTimeseries("sh600036", 5, 10);
-        assertNotNull(ticks);
-        assert (ticks.size() > 0);
+        List<Bar> bars = sinaFinance.timeseriesOperations().getTimeseries("sh600036", 5, 10);
+        assertNotNull(bars);
+        assert (bars.size() > 0);
 
-        ticks = sinaFinance.timeseriesOperations().getTimeseries("sh600036", 1, 10);
-        assertNotNull(ticks);
-        assert (ticks.size() > 0);
+        for (Bar bar : bars)
+        {
+            logger.debug(bar.toString());
+        }
+
+        bars = sinaFinance.timeseriesOperations().getTimeseries("sh600036", 1, 10);
+        assertNotNull(bars);
+        assert (bars.size() > 0);
+
+        for (Bar bar : bars)
+        {
+            logger.debug(bar.toString());
+        }
     }
 }

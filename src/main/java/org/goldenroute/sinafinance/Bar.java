@@ -87,4 +87,11 @@ public class Bar extends SinaFinanceObject implements Serializable
         this.close = close;
         this.volume = volume;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Bar [day=" + day + ", open=" + open + ", high=" + high + ", low=" + low + ", close=" + close
+                + ", volume=" + volume + "]";
+    }
 }

@@ -12,7 +12,7 @@ import org.springframework.web.client.RestOperations;
 
 public class QuoteTemplate implements QuoteOperations
 {
-    private final String BASE_URL = "http://hq.sinajs.cn/format=text&list=";
+    private static final String BASE_URL = "http://hq.sinajs.cn/format=text&list=";
 
     private static final Logger logger = Logger.getLogger(QuoteTemplate.class);
 

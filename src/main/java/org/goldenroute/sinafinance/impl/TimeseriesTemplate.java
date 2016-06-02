@@ -22,8 +22,8 @@ public class TimeseriesTemplate implements TimeseriesOperations
     private static final Logger logger = Logger.getLogger(TimeseriesTemplate.class);
     private static final List<Integer> supportedScales = Arrays.asList(new Integer[] { 1, 5, 15, 30, 60 });
 
-    private final String BASE_URL_ONE = "http://hq.sinajs.cn/format=text&list=";
-    private final String BASE_URL_OTHERS = "http://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData";
+    private static final String BASE_URL_1_MINUTES = "http://hq.sinajs.cn/format=text&list=";
+    private static final String BASE_URL_OTHERS = "http://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData";
 
     private final RestOperations restOperations;
     private final ObjectMapper objectMapper;
@@ -64,7 +64,7 @@ public class TimeseriesTemplate implements TimeseriesOperations
 
         try
         {
-            response = restOperations.getForObject(BASE_URL_ONE + "ml_" + symbol, String.class);
+            response = restOperations.getForObject(BASE_URL_1_MINUTES + "ml_" + symbol, String.class);
         }
         catch (RestClientException e)
         {
@@ -99,6 +99,7 @@ public class TimeseriesTemplate implements TimeseriesOperations
         return bars;
     }
 
+    @SuppressWarnings({ "checkstyle:GenericWhitespace" })
     private List<Bar> request5Plus(String symbol, int scale, int datalen)
     {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(BASE_URL_OTHERS).queryParam("symbol", symbol)

@@ -43,7 +43,7 @@ public class SinaFinanceTest
     @Test
     public void testTimeseries()
     {
-        List<Bar> bars = sinaFinance.timeseriesOperations().getTimeseries("sh600036", 5, 10);
+        List<Bar> bars = sinaFinance.timeseriesOperations().getTimeseries("sh600036", 5, 50);
         assertNotNull(bars);
         assert (bars.size() > 0);
 
@@ -53,6 +53,15 @@ public class SinaFinanceTest
         }
 
         bars = sinaFinance.timeseriesOperations().getTimeseries("sh600036", 1, 10);
+        assertNotNull(bars);
+        assert (bars.size() > 0);
+
+        for (Bar bar : bars)
+        {
+            logger.debug(bar.toString());
+        }
+
+        bars = sinaFinance.timeseriesOperations().getTimeseries("sh600036", 60, 10);
         assertNotNull(bars);
         assert (bars.size() > 0);
 

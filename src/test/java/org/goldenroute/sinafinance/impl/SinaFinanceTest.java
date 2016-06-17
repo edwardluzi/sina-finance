@@ -1,4 +1,4 @@
-package org.goldenroute.sinafinance;
+package org.goldenroute.sinafinance.impl;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
+import org.goldenroute.sinafinance.Bar;
+import org.goldenroute.sinafinance.Quote;
+import org.goldenroute.sinafinance.SinaFinance;
 import org.goldenroute.sinafinance.impl.SinaFinanceTemplate;
 import org.junit.Before;
 import org.junit.Test;
